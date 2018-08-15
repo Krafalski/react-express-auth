@@ -30,7 +30,7 @@ class LoginUser extends Component {
         .then(response => response.json())
         .then(response => {
           if (response.login) {
-            this.props.successfulLogin()
+            this.props.successfulLogin(response)
           }
         }, error => console.log(error))
         .catch(error => console.log(error))
@@ -39,6 +39,7 @@ class LoginUser extends Component {
   render () {
     return (
       <div className='container'>
+        <h2> Log in a User </h2>
         <form onSubmit={this.handleFormSubmit}>
           <div className='field'>
             <label className='label'>Name</label>

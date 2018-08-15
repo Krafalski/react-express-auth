@@ -29,9 +29,6 @@ class CreateUser extends Component {
       })
         .then(response => response.json())
         .then(response => {
-          // update state in some way
-          console.log('user created')
-          console.log(response)
         }, error => console.log(error))
         .catch(error => console.log(error))
     })
@@ -39,6 +36,7 @@ class CreateUser extends Component {
   render () {
     return (
       <div className='container'>
+        <h2> Create a User </h2>
         <form onSubmit={this.handleFormSubmit}>
           <div className='field'>
             <label className='label'>Name</label>

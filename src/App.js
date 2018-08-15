@@ -25,23 +25,24 @@ class App extends Component {
       })
       .catch(error => console.log(error))
   }
-  successfulLogin () {
+  successfulLogin (response) {
+    console.log(response)
     this.setState({
-      loggedIn: true
+      loggedIn: true,
+      currentUser: response.user
     })
   }
   render () {
     return (
       <div className='container'>
-        <h2> Create a User </h2>
-        <CreateUser />
+        {/*  <CreateUser /> */}
         <hr />
-        <h2> Log in a User </h2>
         {this.state.loggedIn
           ? <div>
+            Welcome { this.state.currentUser} <br />
             <button className='button is-danger' onClick={this.logOut}> Log out </button>
           </div>
-          : <LoginUser successfulLogin={this.successfulLogin} />
+          : <LoginUser successfulLogin={this.successfulLogin} loggedIn={this.state.loggedIn} />
         }
       </div>
     )
